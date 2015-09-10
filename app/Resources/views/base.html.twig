@@ -1,13 +1,48 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        {% block stylesheets %}
+            {% stylesheets filter='cssrewrite'
+            'assets/css/bootstrap.min.css'
+            'assets/css/bootstrap-theme.min.css'
+
+
+            %}
+
+            <link rel="stylesheet" href="{{ asset_url }}"/>
+
+            {% endstylesheets %}
+            {#<link rel="stylesheet" href="{{ asset_url }}"/>#}
+        {% endblock stylesheets %}
+    <!-- Bootstrap -->
+</head>
+<body>
+{{ include('layout/header.html.twig') }}
+<!-- Main-->
+<div style="clear:both"></div>
+<div class="jumbotron"></div>
+<div class="page-container">
+    <div class="row">
+        <div class="col-md-12">
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+
+{% block javascriptBlock %}
+    {% javascripts
+    'assets/js/jquery-1.11.3.min.js'
+    'assets/js/bootstrap.min.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+{% endblock %}
+</body>
 </html>

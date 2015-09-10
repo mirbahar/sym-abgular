@@ -1,3 +1,7 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+homePage:
+    pattern: /
+    defaults: { _controller: CoreBundle:Default:index }
+
+product:
+    resource: "@CoreBundle/Resources/config/routing.yml"
+    prefix:   /
