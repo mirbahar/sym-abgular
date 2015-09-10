@@ -1,0 +1,2 @@
+CoreBundle_product:
+    resource: "@CoreBundle/Resources/config/routing/product.yml"
