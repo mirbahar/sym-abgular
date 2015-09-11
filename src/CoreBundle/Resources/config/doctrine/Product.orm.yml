@@ -1,0 +1,22 @@
+CoreBundle\Entity\Product:
+    type: entity
+    table: null
+    repositoryClass: CoreBundle\Repository\ProductRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        quantity:
+            type: integer
+        price:
+            type: float
+        status:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

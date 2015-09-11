@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="utf-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -10,6 +10,7 @@
             {% stylesheets filter='cssrewrite'
             'assets/css/bootstrap.min.css'
             'assets/css/bootstrap-theme.min.css'
+            'assets/css/app.css'
 
 
             %}
@@ -33,16 +34,24 @@
         </div>
     </div>
 </div>
-
-
 {% block javascriptBlock %}
     {% javascripts
     'assets/js/jquery-1.11.3.min.js'
     'assets/js/bootstrap.min.js'
+    'assets/angularjs/angular.js'
+    '@CoreBundle/Resources/public/js/controllers.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
 {% endblock %}
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        {% block documentReady %}
+
+        {% endblock %}
+
+    });
+</script>
 </body>
 </html>

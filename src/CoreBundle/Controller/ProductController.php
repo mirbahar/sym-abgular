@@ -2,13 +2,23 @@
 
 namespace CoreBundle\Controller;
 
+use CoreBundle\Entity\Product;
+use CoreBundle\Form\ProductType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $product = new Product();
+        $form = $this->createForm(new ProductType(), $product);
+        $productLists = $this->getDoctrine()->getRepository('CoreBundle:Product')->getAll();
+//        var_dump($projectRepository);die;
+        return $this->render('CoreBundle:Product:form.html.twig',array(
+            'form' => $form->createView(),
+            'productLists'=>$productLists
+        ));
 
-        return $this->render('CoreBundle:Product:add.html.twig');
     }
 }

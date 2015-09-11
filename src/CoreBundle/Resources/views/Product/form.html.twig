@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row" ng-controller = "ProductListCtrl">
+        <div class="col-md-12">
+
+        <div class="col-md-6">
+
+             <div class="portlet-body form">
+            {{ form_start(form, { 'attr': {'class': 'form-horizontal', 'id': 'project-form', 'novalidate': 'novalidate'} }) }}
+                <div class="form-body">
+
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <div class="input-group">
+											<span class="input-group-addon input-circle-left">
+											<i class="fa fa-envelope"></i>
+											</span>
+                            {{ form_widget(form.name, { 'attr': {'ng-model':'name','class': 'form-control'} }) }}
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <div class="input-group">
+											<span class="input-group-addon input-circle-left">
+											<i class="fa fa-envelope"></i>
+											</span>
+                            {{ form_widget(form.description, { 'attr': {'ng-model':'description','class': 'form-control'} }) }}
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Name</label>
+                        <div class="input-group">
+											<span class="input-group-addon input-circle-left">
+											<i class="fa fa-envelope"></i>
+											</span>
+                            {{ form_widget(form.quantity, { 'attr': {'ng-model':'quantity','class': 'form-control'} }) }}
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <div class="input-group">
+											<span class="input-group-addon input-circle-left">
+											<i class="fa fa-envelope"></i>
+											</span>
+                            {{ form_widget(form.price, { 'attr': {'ng-model':'price','class': 'form-control'} }) }}
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>status</label>
+                        <div class="input-group">
+											<span class="input-group-addon input-circle-left">
+											<i class="fa fa-envelope"></i>
+											</span>
+                            {{ form_widget(form.status, { 'attr': {'ng-model':'status','class': 'form-control'} }) }}
+
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                    {{ form_widget(form.save, { 'attr': {'ng-click':'createProject()','class': 'btn button-width'} }) }}
+                    <button type="button" class="btn default">Cancel</button>
+                </div>
+
+                </div>
+            {{ form_end(form) }}
+            </div>
+
+        </div>
+
+            <div class="col-md-6">
+                <label>Product List</label>
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>price</th>
+                                <th>status</th>
+                                <th>Action</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for index, productList in productLists %}
+                                <tr>
+                                    <td>{{ index+1 }}</td>
+                                    <td>{{ productList.name }}</td>
+                                    <td>{{ productList.description }}</td>
+                                    <td>{{ productList.quantity }}</td>
+                                    <td>{{ productList.price }}</td>
+                                    <td>{{ productList.status }}</td>
+                                    <td>Action</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+    </div>
+
+
+{% endblock %}
+
+{#{% block javascriptBlock %}#}
+
+        {#{{ parent() }}#}
+
+        {#<!-- BEGIN PAGE LEVEL PLUGINS -->#}
+        {#{% javascripts#}
+            {#'assets/angularjs/angular.js'#}
+            {#'@CoreBundle/Resources/public/js/controllers.js'#}
+        {#%}#}
+        {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
+
+        {#{% endjavascripts %}#}
+
+{#{% endblock javascriptBlock %}#}
+
+
+ {% block documentReady %}
+     {{ parent() }}
+
+ {% endblock %}
