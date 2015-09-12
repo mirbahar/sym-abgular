@@ -71,7 +71,7 @@
         </div>
 
             <div class="col-md-6">
-                <label>Product List</label>
+                <label><input type="text" class="form-control" placeholder="Search Product" ng-model="query"></label>
                 <div class="portlet-body">
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -88,17 +88,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {% for index, productList in productLists %}
-                                <tr>
-                                    <td>{{ index+1 }}</td>
-                                    <td>{{ productList.name }}</td>
-                                    <td>{{ productList.description }}</td>
-                                    <td>{{ productList.quantity }}</td>
-                                    <td>{{ productList.price }}</td>
-                                    <td>{{ productList.status }}</td>
+                                <tr ng-repeat="product in products | filter:query | orderBy:orderProp">
+                                    <td>{{ '{{ product.id }}' }}</td>
+                                    <td>{{ '{{ product.name }}' }}</td>
+                                    <td>{{ '{{ product.description }}' }}</td>
+                                    <td>{{ '{{ product.quantity }}' }}</td>
+                                    <td>{{ '{{ product.price }}' }}</td>
+                                    <td>{{ '{{ product.status }}' }}</td>
                                     <td>Action</td>
                                 </tr>
-                                {% endfor %}
+
                             </tbody>
                         </table>
                     </div>

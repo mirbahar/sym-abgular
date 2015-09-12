@@ -4,11 +4,10 @@ var npmsApp = angular.module('myApp', []);
 // listing data with search
 npmsApp.controller('ProductListCtrl', function ($scope,$http) {
 
-    var $url =  Routing.generate('project_list_angular_list');
-alert($url);
-  $http.post($url).success(function(data) {
-      $scope.phones = data
+    var $url =  Routing.generate('product_list_angular');
 
+  $http.post($url).success(function(data) {
+      $scope.products = data
    });
 });
 
