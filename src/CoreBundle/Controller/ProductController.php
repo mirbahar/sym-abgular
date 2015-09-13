@@ -14,11 +14,18 @@ class ProductController extends Controller
     {
         $product = new Product();
         $form = $this->createForm(new ProductType(), $product);
-        $productLists = $this->getDoctrine()->getRepository('CoreBundle:Product')->getAll();
-//        var_dump($projectRepository);die;
+
+        if ($request->getMethod() == 'POST') {
+            $this->getDoctrine()->getRepository('CoreBundle:Product')->create($product);
+            $this->get('session')->getFlashBag()->add(
+                'notice',
+                'product Add Successfully'
+            );
+
+            return $this->redirect($this->generateUrl('product_add'));
+        }
         return $this->render('CoreBundle:Product:form.html.twig',array(
-            'form' => $form->createView(),
-            'productLists'=>$productLists
+            'form' => $form->createView()
         ));
 
     }

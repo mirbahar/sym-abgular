@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="row" ng-controller = "ProductListCtrl">
+    <div class="row" >
         <div class="col-md-12">
 
-        <div class="col-md-6">
+        <div class="col-md-6" ng-controller="formController">
 
              <div class="portlet-body form">
-            {{ form_start(form, { 'attr': {'class': 'form-horizontal', 'id': 'project-form', 'novalidate': 'novalidate'} }) }}
+            {{ form_start(form, { 'attr': {'class': 'form-horizontal', 'id': 'product-form', 'novalidate': 'novalidate'} }) }}
                 <div class="form-body">
 
                     <div class="form-group">
@@ -15,7 +15,7 @@
 											<span class="input-group-addon input-circle-left">
 											<i class="fa fa-envelope"></i>
 											</span>
-                            {{ form_widget(form.name, { 'attr': {'ng-model':'name','class': 'form-control'} }) }}
+                            {{ form_widget(form.name, { 'attr': {'ng-model':'formData.name','class': 'form-control'} }) }}
 
                         </div>
                     </div>
@@ -25,17 +25,17 @@
 											<span class="input-group-addon input-circle-left">
 											<i class="fa fa-envelope"></i>
 											</span>
-                            {{ form_widget(form.description, { 'attr': {'ng-model':'description','class': 'form-control'} }) }}
+                            {{ form_widget(form.description, { 'attr': {'ng-model':'formData.description','class': 'form-control'} }) }}
 
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Product Name</label>
+                        <label>Quantity</label>
                         <div class="input-group">
 											<span class="input-group-addon input-circle-left">
 											<i class="fa fa-envelope"></i>
 											</span>
-                            {{ form_widget(form.quantity, { 'attr': {'ng-model':'quantity','class': 'form-control'} }) }}
+                            {{ form_widget(form.quantity, { 'attr': {'ng-model':'formData.quantity','class': 'form-control'} }) }}
 
                         </div>
                     </div>
@@ -45,7 +45,7 @@
 											<span class="input-group-addon input-circle-left">
 											<i class="fa fa-envelope"></i>
 											</span>
-                            {{ form_widget(form.price, { 'attr': {'ng-model':'price','class': 'form-control'} }) }}
+                            {{ form_widget(form.price, { 'attr': {'ng-model':'formData.price','class': 'form-control'} }) }}
 
                         </div>
                     </div>
@@ -55,12 +55,12 @@
 											<span class="input-group-addon input-circle-left">
 											<i class="fa fa-envelope"></i>
 											</span>
-                            {{ form_widget(form.status, { 'attr': {'ng-model':'status','class': 'form-control'} }) }}
+                            {{ form_widget(form.status, { 'attr': {'ng-model':'formData.status','class': 'form-control'} }) }}
 
                         </div>
                     </div>
                     <div class="form-actions">
-                    {{ form_widget(form.save, { 'attr': {'ng-click':'createProject()','class': 'btn button-width'} }) }}
+                    {{ form_widget(form.save, { 'attr': {'ng-click':'createProduct()','class': 'btn button-width'} }) }}
                     <button type="button" class="btn default">Cancel</button>
                 </div>
 
@@ -70,7 +70,7 @@
 
         </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6" ng-controller = "ProductListCtrl">
                 <label><input type="text" class="form-control" placeholder="Search Product" ng-model="query"></label>
                 <div class="portlet-body">
                     <div class="table-responsive">
@@ -109,22 +109,6 @@
 
 
 {% endblock %}
-
-{#{% block javascriptBlock %}#}
-
-        {#{{ parent() }}#}
-
-        {#<!-- BEGIN PAGE LEVEL PLUGINS -->#}
-        {#{% javascripts#}
-            {#'assets/angularjs/angular.js'#}
-            {#'@CoreBundle/Resources/public/js/controllers.js'#}
-        {#%}#}
-        {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
-
-        {#{% endjavascripts %}#}
-
-{#{% endblock javascriptBlock %}#}
-
 
  {% block documentReady %}
      {{ parent() }}

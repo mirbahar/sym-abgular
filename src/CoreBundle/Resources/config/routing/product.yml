@@ -1,6 +1,8 @@
-add_product:
+product_add:
     pattern: /product/add
-    defaults: { _controller: CoreBundle:Product:index }
+    defaults: { _controller: CoreBundle:Product:index}
+    options:
+            expose: true
 
 product_list_angular:
     pattern: /project/project-list
